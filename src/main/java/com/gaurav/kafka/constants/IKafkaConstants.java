@@ -1,21 +1,24 @@
 package com.gaurav.kafka.constants;
 
 public interface IKafkaConstants {
-	public static String KAFKA_BROKERS = "localhost:9092";
+	//String KAFKA_BROKERS = "vikram-latitude-5400:9094";
+	String KAFKA_BROKERS = "localhost:9092";
+
+	Integer MESSAGE_COUNT=1000;
 	
-	public static Integer MESSAGE_COUNT=1000;
+	String CLIENT_ID="client1";
 	
-	public static String CLIENT_ID="client1";
+	//String TOPIC_NAME="demo";
+	String TOPIC_NAME="test";
+
+	String GROUP_ID_CONFIG="consumerGroup12";
+	//String GROUP_ID_CONFIG = "test-consumer-group";
 	
-	public static String TOPIC_NAME="demo";
+	Integer MAX_NO_MESSAGE_FOUND_COUNT=100;
 	
-	public static String GROUP_ID_CONFIG="consumerGroup10";
+	String OFFSET_RESET_LATEST="latest";
 	
-	public static Integer MAX_NO_MESSAGE_FOUND_COUNT=100;
+	String OFFSET_RESET_EARLIER="earliest";
 	
-	public static String OFFSET_RESET_LATEST="latest";
-	
-	public static String OFFSET_RESET_EARLIER="earliest";
-	
-	public static Integer MAX_POLL_RECORDS=1;
+	Integer MAX_POLL_RECORDS=1;
 }

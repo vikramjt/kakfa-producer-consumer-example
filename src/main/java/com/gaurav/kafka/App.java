@@ -1,5 +1,6 @@
 package com.gaurav.kafka;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
@@ -13,20 +14,27 @@ import org.apache.kafka.clients.producer.RecordMetadata;
 import com.gaurav.kafka.constants.IKafkaConstants;
 import com.gaurav.kafka.consumer.ConsumerCreator;
 import com.gaurav.kafka.producer.ProducerCreator;
+import org.apache.kafka.common.PartitionInfo;
 
 public class App {
 	public static void main(String[] args) {
+		System.out.println("starte ::: " );
+		//System.setProperty("java.security.krb5.conf", "//etc//krb5.conf");
+		//System.setProperty("java.security.auth.login.config", "//home//vikram//kafka_sasl_conf//kafka_client_jass.conf");
+		//System.setProperty("sun.security.krb5.debug", "true");
 //		runProducer();
 		runConsumer();
 	}
 
 	static void runConsumer() {
 		Consumer<Long, String> consumer = ConsumerCreator.createConsumer();
-
+		Map<String, List<PartitionInfo>> topics = consumer.listTopics();
+		System.out.println("List of topics: " + topics);
+		Set<String> listTopicKeys = topics.keySet();
+		for(String listTopicKey: listTopicKeys){
+			System.out.println(listTopicKey);
+		}
 		int noMessageToFetch = 0;
-		System.out.println("List of topics: " + consumer.listTopics());
-		Map<String, java.util.List<org.apache.kafka.common.PartitionInfo>> listTopic = consumer.listTopics();
-		Set<String> listTopicKey = listTopic.keySet();
 
 		while (true) {
 			final ConsumerRecords<Long, String> consumerRecords = consumer.poll(1000);
